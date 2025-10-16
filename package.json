@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
-		"build": "tsc -b && vite build",
+		"build": "tsc && vite build",
 		"preview": "vite preview",
 		"lint": "biome lint .",
 		"lint:fix": "biome lint --apply .",
@@ -14,12 +14,12 @@
 		"check": "biome check .",
 		"check:fix": "biome check --apply .",
 		"dev:clean": "biome check --apply . && vite",
-		"build:clean": "biome check --apply . && tsc -b && vite build"
+		"build:clean": "biome check --apply . && tsc && vite build"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "^5.2.2",
 		"@radix-ui/react-label": "^2.1.7",
-		"@radix-ui/react-navigation-menu": "^1.2.14",
+		"@radix-ui/react-navigation-menu": "^2.1.14",
 		"@radix-ui/react-separator": "^1.1.7",
 		"@radix-ui/react-slot": "^1.2.3",
 		"@tailwindcss/vite": "^4.1.14",
@@ -31,7 +31,7 @@
 		"react-hook-form": "^7.65.0",
 		"tailwind-merge": "^3.3.1",
 		"tailwindcss": "^4.1.14",
-		"zod": "^4.1.12"
+		"zod": "^3.23.8"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.2.6",
