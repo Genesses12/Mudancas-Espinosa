@@ -1,6 +1,5 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { useId } from "react";
 
 const testimonials = [
 	{
@@ -30,9 +29,9 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
-	const depoimentosId = useId();
 	return (
-		<section id={depoimentosId} className="py-20 bg-gray-50">
+		// biome-ignore lint/correctness/useUniqueElementIds: <explanation>
+		<section id="depoimentos" className="py-20 bg-gray-50">
 			<div className="container mx-auto px-4">
 				<div className="text-center mb-16">
 					<Badge variant="secondary" className="mb-4 text-lg py-2 px-4">

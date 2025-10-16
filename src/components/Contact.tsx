@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { useId, useState } from "react";
+import { useState } from "react";
 
 export default function Contact() {
 	const [formData, setFormData] = useState({
@@ -12,13 +12,6 @@ export default function Contact() {
 		phone: "",
 		message: "",
 	});
-
-	// Gerar IDs únicos
-	const nameId = useId();
-	const emailId = useId();
-	const phoneId = useId();
-	const messageId = useId();
-	const sectionId = useId();
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
@@ -36,7 +29,8 @@ export default function Contact() {
 	};
 
 	return (
-		<section id={sectionId} className="py-20 bg-white">
+		// biome-ignore lint/correctness/useUniqueElementIds: <a>
+		<section id="contato" className="py-20 bg-white">
 			<div className="container mx-auto px-4">
 				<div className="text-center mb-16">
 					<h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
@@ -57,9 +51,10 @@ export default function Contact() {
 							<form onSubmit={handleSubmit} className="space-y-6">
 								<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 									<div className="space-y-2">
-										<Label htmlFor={nameId}>Nome completo</Label>
+										<Label htmlFor="name">Nome completo</Label>
+										{/** biome-ignore lint/correctness/useUniqueElementIds: <a> */}
 										<Input
-											id={nameId}
+											id="name"
 											name="name"
 											placeholder="Seu nome completo"
 											value={formData.name}
@@ -68,9 +63,10 @@ export default function Contact() {
 										/>
 									</div>
 									<div className="space-y-2">
-										<Label htmlFor={emailId}>E-mail</Label>
+										<Label htmlFor="email">E-mail</Label>
+										{/** biome-ignore lint/correctness/useUniqueElementIds: <a> */}
 										<Input
-											id={emailId}
+											id="email"
 											name="email"
 											type="email"
 											placeholder="Seu e-mail"
@@ -81,9 +77,10 @@ export default function Contact() {
 									</div>
 								</div>
 								<div className="space-y-2">
-									<Label htmlFor={phoneId}>Telefone</Label>
+									<Label htmlFor="phone">Telefone</Label>
+									{/** biome-ignore lint/correctness/useUniqueElementIds: <a> */}
 									<Input
-										id={phoneId}
+										id="phone"
 										name="phone"
 										placeholder="Seu telefone"
 										value={formData.phone}
@@ -92,9 +89,10 @@ export default function Contact() {
 									/>
 								</div>
 								<div className="space-y-2">
-									<Label htmlFor={messageId}>Mensagem</Label>
+									<Label htmlFor="message">Mensagem</Label>
+									{/** biome-ignore lint/correctness/useUniqueElementIds: <a> */}
 									<Textarea
-										id={messageId}
+										id="message"
 										name="message"
 										placeholder="Conte-nos sobre sua mudança..."
 										value={formData.message}

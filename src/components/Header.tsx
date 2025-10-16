@@ -1,56 +1,91 @@
 import { Button } from "@/components/ui/button";
+import {
+	NavigationMenu,
+	NavigationMenuItem,
+	NavigationMenuLink,
+	NavigationMenuList,
+} from "@/components/ui/navigation-menu";
 import { useState } from "react";
 
 export default function Header() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+	const scrollToSection = (sectionId: string) => {
+		setIsMenuOpen(false);
+		const element = document.getElementById(sectionId);
+		if (element) {
+			element.scrollIntoView({
+				behavior: "smooth",
+				block: "start",
+			});
+		}
+	};
 
 	return (
 		<header className="bg-white shadow-lg fixed w-full top-0 z-50">
 			<div className="container mx-auto px-4">
 				<div className="flex justify-between items-center py-4">
 					{/* Logo */}
-					<div className="flex items-center">
-						<div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-							<span className="text-white font-bold text-lg">M</span>
+					<Button
+						variant="ghost"
+						className="p-0 hover:bg-transparent"
+						onClick={() => scrollToSection("home")}
+					>
+						<div className="flex items-center">
+							<div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+								<span className="text-white font-bold text-lg">M</span>
+							</div>
+							<span className="ml-2 text-xl font-bold text-gray-800">
+								Mudanças Espinosa
+							</span>
 						</div>
-						<span className="ml-2 text-xl font-bold text-gray-800">
-							Mudanças Espinosa
-						</span>
-					</div>
+					</Button>
 
-					{/* Desktop Navigation */}
-					<nav className="hidden md:flex space-x-8">
-						<a
-							href="#home"
-							className="text-gray-600 hover:text-blue-600 transition-colors font-medium"
-						>
-							Início
-						</a>
-						<a
-							href="#servicos"
-							className="text-gray-600 hover:text-blue-600 transition-colors font-medium"
-						>
-							Serviços
-						</a>
-						<a
-							href="#sobre"
-							className="text-gray-600 hover:text-blue-600 transition-colors font-medium"
-						>
-							Sobre
-						</a>
-						<a
-							href="#depoimentos"
-							className="text-gray-600 hover:text-blue-600 transition-colors font-medium"
-						>
-							Depoimentos
-						</a>
-						<a
-							href="#contato"
-							className="text-gray-600 hover:text-blue-600 transition-colors font-medium"
-						>
-							Contato
-						</a>
-					</nav>
+					{/* Desktop Navigation com shadcn */}
+					<NavigationMenu className="hidden md:flex">
+						<NavigationMenuList className="space-x-2">
+							<NavigationMenuItem>
+								<NavigationMenuLink
+									className="px-4 py-2 text-gray-600 hover:text-blue-600 transition-colors font-medium cursor-pointer"
+									onClick={() => scrollToSection("home")}
+								>
+									Início
+								</NavigationMenuLink>
+							</NavigationMenuItem>
+							<NavigationMenuItem>
+								<NavigationMenuLink
+									className="px-4 py-2 text-gray-600 hover:text-blue-600 transition-colors font-medium cursor-pointer"
+									onClick={() => scrollToSection("servicos")}
+								>
+									Serviços
+								</NavigationMenuLink>
+							</NavigationMenuItem>
+							<NavigationMenuItem>
+								<NavigationMenuLink
+									className="px-4 py-2 text-gray-600 hover:text-blue-600 transition-colors font-medium cursor-pointer"
+									onClick={() => scrollToSection("sobre")}
+								>
+									Sobre
+								</NavigationMenuLink>
+							</NavigationMenuItem>
+							<NavigationMenuItem>
+								<NavigationMenuLink
+									className="px-4 py-2 text-gray-600 hover:text-blue-600 transition-colors font-medium cursor-pointer"
+									onClick={() => scrollToSection("depoimentos")}
+								>
+									Depoimentos
+								</NavigationMenuLink>
+							</NavigationMenuItem>
+							<NavigationMenuItem>
+								<NavigationMenuLink
+									className="px-4 py-2 text-gray-600 hover:text-blue-600 transition-colors font-medium cursor-pointer"
+									onClick={() => scrollToSection("contato")}
+								>
+									Contato
+								</NavigationMenuLink>
+							</NavigationMenuItem>
+						</NavigationMenuList>
+					</NavigationMenu>
 
 					{/* CTA Button */}
 					<Button className="hidden md:flex">Solicitar Orçamento</Button>
@@ -74,36 +109,41 @@ export default function Header() {
 				{isMenuOpen && (
 					<div className="md:hidden py-4 border-t">
 						<nav className="flex flex-col space-y-4">
-							<a
-								href="#home"
-								className="text-gray-600 hover:text-blue-600 font-medium"
+							<Button
+								variant="ghost"
+								className="justify-start text-gray-600 hover:text-blue-600 font-medium"
+								onClick={() => scrollToSection("home")}
 							>
 								Início
-							</a>
-							<a
-								href="#servicos"
-								className="text-gray-600 hover:text-blue-600 font-medium"
+							</Button>
+							<Button
+								variant="ghost"
+								className="justify-start text-gray-600 hover:text-blue-600 font-medium"
+								onClick={() => scrollToSection("servicos")}
 							>
 								Serviços
-							</a>
-							<a
-								href="#sobre"
-								className="text-gray-600 hover:text-blue-600 font-medium"
+							</Button>
+							<Button
+								variant="ghost"
+								className="justify-start text-gray-600 hover:text-blue-600 font-medium"
+								onClick={() => scrollToSection("sobre")}
 							>
 								Sobre
-							</a>
-							<a
-								href="#depoimentos"
-								className="text-gray-600 hover:text-blue-600 font-medium"
+							</Button>
+							<Button
+								variant="ghost"
+								className="justify-start text-gray-600 hover:text-blue-600 font-medium"
+								onClick={() => scrollToSection("depoimentos")}
 							>
 								Depoimentos
-							</a>
-							<a
-								href="#contato"
-								className="text-gray-600 hover:text-blue-600 font-medium"
+							</Button>
+							<Button
+								variant="ghost"
+								className="justify-start text-gray-600 hover:text-blue-600 font-medium"
+								onClick={() => scrollToSection("contato")}
 							>
 								Contato
-							</a>
+							</Button>
 							<Button className="w-full">Solicitar Orçamento</Button>
 						</nav>
 					</div>

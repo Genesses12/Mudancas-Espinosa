@@ -1,11 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { useId } from "react";
 
 export default function Hero() {
-	const homeId = useId();
 	return (
+		// biome-ignore lint/correctness/useUniqueElementIds: <explanation>
 		<section
-			id={homeId}
+			id="home"
 			className="pt-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white"
 		>
 			<div className="container mx-auto px-4 py-20">

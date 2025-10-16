@@ -2,7 +2,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
-import { useId } from "react";
 
 const features = [
 	"Equipe especializada e treinada",
@@ -14,9 +13,9 @@ const features = [
 ];
 
 export default function About() {
-	const sobreId = useId();
 	return (
-		<section id={sobreId} className="py-20 bg-white">
+		// biome-ignore lint/correctness/useUniqueElementIds: <a>
+		<section id="sobre" className="py-20 bg-white">
 			<div className="container mx-auto px-4">
 				<div className="text-center mb-16">
 					<Badge variant="secondary" className="mb-4 text-lg py-2 px-4">
